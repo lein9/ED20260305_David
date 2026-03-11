@@ -14,6 +14,9 @@ public class ControlTablaMultiplicar {
 	/** Formato tipo «printf» para el nombre del archivo de exportación. */
 	public static final String FORMATO_RUTA_ARCHIVO_EXPORTACIÓN = "tabla del %02d.txt";
 	
+	//String[] final OPCIONES_MENÚ_PRINCIPAL;
+	// Arrays.asList();
+	
 	/** Tabla de multiplicar activa. */
 	private TablaMultiplicar tabla;
 	
@@ -37,18 +40,24 @@ public class ControlTablaMultiplicar {
 	/**
 	 * Gestión del menú principal. Desde este menú se ejecutan las opciones disponibles a elección del
 	 * usuario. 
-	 * A la sadila del menú se finaliza el programa. 
+	 * A la salida del menú se finaliza el programa. 
 	 */
 	public void buclePrincipal() {
 		VistaMenú menú;
 		int opción;
+		final String[] OPCIONES_MENÚ_PRINCIPAL;
+
+		OPCIONES_MENÚ_PRINCIPAL = new String[tabla.toListaPantalla().size()];
+		for (int i=0; i<tabla.toListaPantalla().size(); i++) {
+			OPCIONES_MENÚ_PRINCIPAL[i] = tabla.toListaPantalla().get(i);
+		}
 		
 		// título, array de opciones
 		menú = new VistaMenú("Tablas de multiplicar", OPCIONES_MENÚ_PRINCIPAL);
 		
 		do {
 			menú.mostrarOpciones();
-			opción = menú.pedirNúmero(); // tal vez .pedirOpción() del menú original
+			opción = menú.pedirOpción(); // tal vez .pedirOpción() del menú original
 			
 			switch (opción) {
 			case 1:	// Mostrar tabla
@@ -108,7 +117,6 @@ public class ControlTablaMultiplicar {
 		int n;
 		
 		n = VistaGeneral.pedirNúmero("Introduzca el número de la tabla a la que cambiar: ");
-		// falta lo del Scanner
 		tabla = new TablaMultiplicar(n);
 		tabla.generarTabla();
 	}
