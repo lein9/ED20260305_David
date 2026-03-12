@@ -107,7 +107,9 @@ public class ControlTablaMultiplicar {
 	 * Muestra un mensaje de aviso indicando que 
 	 * la opción elegida no está disponible.
 	*/
-	private void opciónNoDisponible(){}
+	private void opciónNoDisponible(){
+		VistaMenú.mostrarAviso();	// RELLENAR EL AVISO CON ALGO (el método es de VistaGeneral)
+	}
 
 
 

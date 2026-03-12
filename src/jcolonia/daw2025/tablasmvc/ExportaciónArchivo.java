@@ -7,7 +7,12 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.List;
 
-
+/**
+ * Proporciona funciones para indicar la ruta de exportación del archivo y para guardar los datos. 
+ * 
+ * @author dani - GitHub: lein9
+ * @version 2.0 20260312
+ */
 public class ExportaciónArchivo {
 	/** ruta/nombre del archivo que se creará */
 	private Path refArchivo;
