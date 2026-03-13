@@ -6,8 +6,10 @@ import java.util.Scanner;
  * Posee todas las funciones de impresión
  */
 public class VistaGeneral {		/* ¿tal vez hacerla abstracta? */
-	private final static String FORMATO_PRINTF_MOSTRARTEXTO;
-	private final static String FORMATO_PRINTF_MOSTRARAVISO;
+	/** Formato para el texto mostrado por consola */
+	private final static String FORMATO_PRINTF_MOSTRARTEXTO = "%s%n";
+	/** Formato para el texto de aviso -saldrá en verde, salvo consolas sin opción de color - */
+	private final static String FORMATO_PRINTF_MOSTRARAVISO = "\033[32m *** %s%n *** \033[m";
 	private static Scanner scEntrada;
 
 	public static Scanner getScEntrada() { // método getInstance()
@@ -19,11 +21,11 @@ public class VistaGeneral {		/* ¿tal vez hacerla abstracta? */
 	}
 
 	public static void mostrarTexto(String texto) {
-		System.out.println(texto);
+		System.out.printf(FORMATO_PRINTF_MOSTRARTEXTO, texto);
 	}
 
 	public static void mostrarAviso(String texto) {
-		System.out.println(texto);
+		System.out.printf(FORMATO_PRINTF_MOSTRARAVISO, texto);
 	}
 
 	/**
@@ -51,7 +53,7 @@ public class VistaGeneral {		/* ¿tal vez hacerla abstracta? */
 		}
 
 		System.out.printf(" %s %n", texto);
-		System.out.printf("%s%n", base);
+		System.out.printf(FORMATO_PRINTF_MOSTRARTEXTO, base);
 	}
 
 	/**
@@ -83,7 +85,7 @@ public class VistaGeneral {		/* ¿tal vez hacerla abstracta? */
 		}
 
 		System.out.printf(" %s %n", texto);
-		System.out.printf("%s%n", base);
+		System.out.printf(FORMATO_PRINTF_MOSTRARTEXTO, base);
 	}
 
 	public static int pedirNúmero(String texto) {
@@ -96,7 +98,7 @@ public class VistaGeneral {		/* ¿tal vez hacerla abstracta? */
 	 * @param texto texto que se mostrará en el mensaje
 	 */
 	public static void pausa(String texto) {
-		System.out.println(texto); // será tipo: "Pulsa una tecla para continuar..."
+		System.out.printf(FORMATO_PRINTF_MOSTRARTEXTO, texto); // será tipo: "Pulsa una tecla para continuar..."
 		scEntrada.nextLine();
 	}
 
@@ -107,11 +109,11 @@ public class VistaGeneral {		/* ¿tal vez hacerla abstracta? */
 	 * @return si se confirma o no
 	 */
 	public static boolean pedirConfirmación(String texto) {
-		// Mensaje que espere como respuesta 's' o 'n'. Por ej: "¿Quieres salir del programa? → s - sí | n - no ":
+		// Mensaje que espere como respuesta 's' o 'n'. Por ej: "¿Quieres salir del programa? → s - sí | n - no "
 		boolean confirmado = false;
 		String introducido;
 
-		System.out.println(texto);
+		System.out.printf(FORMATO_PRINTF_MOSTRARTEXTO, texto);
 		introducido = scEntrada.nextLine();
 
 		switch (introducido) {
@@ -128,7 +130,7 @@ public class VistaGeneral {		/* ¿tal vez hacerla abstracta? */
 			confirmado = false;
 			break;
 		default:
-			System.out.println("Solo son válidos 's' o 'n'.");
+			System.out.printf(FORMATO_PRINTF_MOSTRARTEXTO, "Solo son válidos 's' o 'n'.");
 			// Recursivo. Con el 'return' nos aseguramos que la confirmación (la respuesta)
 			// llegue al método original
 			return pedirConfirmación(texto);
