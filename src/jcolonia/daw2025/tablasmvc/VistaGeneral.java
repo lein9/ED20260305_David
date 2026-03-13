@@ -97,12 +97,17 @@ public class VistaGeneral {		/* ¿tal vez hacerla abstracta? */
 	 */
 	public static void pausa(String texto) {
 		System.out.println(texto); // será tipo: "Pulsa una tecla para continuar..."
-		scEntrada.nextLine(); // cuando se presione se pasará a la función que cierra el escaner
-		scEntrada.close();
+		scEntrada.nextLine();
 	}
 
+	/**
+	 * Pide la confirmación al usuario (usando {@link Scanner}) con respecto a un mensaje que se le pasa como parámetro. 
+	 * 
+	 * @param texto mensaje a mostrar para solicitar confirmación 
+	 * @return si se confirma o no
+	 */
 	public static boolean pedirConfirmación(String texto) {
-		// Mensaje que espere, como respuesta 's' o 'n'. Por ej: "¿Quieres salir del programa? → s - sí | n - no ":
+		// Mensaje que espere como respuesta 's' o 'n'. Por ej: "¿Quieres salir del programa? → s - sí | n - no ":
 		boolean confirmado = false;
 		String introducido;
 
