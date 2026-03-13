@@ -5,7 +5,7 @@ import java.util.Scanner;
 /**
  * Posee todas las funciones de impresión
  */
-public class VistaGeneral {
+public class VistaGeneral {		/* ¿tal vez hacerla abstracta? */
 	private final static String FORMATO_PRINTF_MOSTRARTEXTO;
 	private final static String FORMATO_PRINTF_MOSTRARAVISO;
 	private static Scanner scEntrada;
@@ -102,31 +102,34 @@ public class VistaGeneral {
 	}
 
 	public static boolean pedirConfirmación(String texto) {
-		boolean presionado = false;
-		final String MENSAJE_CONFIRMACIÓN = "¿Quieres salir del programa?  →  s - sí | n - no ";
-		
-		System.out.println(MENSAJE_CONFIRMACIÓN);
+		// Mensaje que espere, como respuesta 's' o 'n'. Por ej: "¿Quieres salir del programa? → s - sí | n - no ":
+		boolean confirmado = false;
+		String introducido;
 
-		switch(texto) {
-			case "s":
-				presionado = true;
-				break;
-			case "S":
-				presionado = true;
-				break;
-			case "n":
-				presionado = false;
-				break;
-			case "N":
-				presionado = false;
-				break;
-			default: 
-				System.out.println("Por favor introduce 's' o 'n'.");
-				System.out.println(MENSAJE_CONFIRMACIÓN);
-				break;
+		System.out.println(texto);
+		introducido = scEntrada.nextLine();
+
+		switch (introducido) {
+		case "s":
+			confirmado = true;
+			break;
+		case "S":
+			confirmado = true;
+			break;
+		case "n":
+			confirmado = false;
+			break;
+		case "N":
+			confirmado = false;
+			break;
+		default:
+			System.out.println("Solo son válidos 's' o 'n'.");
+			// Recursivo. Con el 'return' nos aseguramos que la confirmación (la respuesta)
+			// llegue al método original
+			return pedirConfirmación(texto);
 		}
-		
-		return presionado;
+
+		return confirmado;
 	}
 
 	public void mostrarLista(List<String> lista) {
