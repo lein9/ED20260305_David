@@ -11,16 +11,11 @@ public class ControlTablaMultiplicar {
 	*/
 	public static final String FORMATO_RUTA_ARCHIVO_EXPORTACIÓN="tabla del %02d.txt";
 	
-	// Creo que el profesor quiere que lo obtengamos como array y lo cambiemos a lista
-		/** Array de opciones para el menú */
-		public static final String[] OPCIONES_MENÚ_PRINCIPAL;
+	/** Array de opciones para el menú */
+	public static final String[] OPCIONES_MENÚ_PRINCIPAL = {"Mostrar tabla", "Cambiar de tabla", "Exportar tabla"};
 	
 	/** Tabla de multiplicar activa. */
 	private TablaMultiplicar tabla;
-	
-	{	// ESTA ES LA V2
-		OPCIONES_MENÚ_PRINCIPAL
-	}
 
 	/**
 	 * Inicia el programa
@@ -46,7 +41,7 @@ public class ControlTablaMultiplicar {
 		VistaMenú menú;
 		int opción;
 		
-		menú=new VistaMenú("Tablas de multiplicar", Arrays.asList(OPCIONES_MENÚ_PRINCIPAL));
+		menú = new VistaMenú("Tablas de multiplicar", List.of(OPCIONES_MENÚ_PRINCIPAL));
 		
 		do{
 			menú.mostrarOpciones();
@@ -86,7 +81,7 @@ public class ControlTablaMultiplicar {
 	private void cambiarTabla(){
 		int n;
 		
-		VistaGeneral.pedirNúmero("Introduzca el número para la tabla");
+		n = VistaGeneral.pedirNúmero("Introduzca el número para la tabla");
 		
 		tabla=new TablaMultiplicar(n);
 		tabla.generarTabla();
@@ -108,7 +103,7 @@ public class ControlTablaMultiplicar {
 	 * la opción elegida no está disponible.
 	*/
 	private void opciónNoDisponible(){
-		VistaMenú.mostrarAviso();	// RELLENAR EL AVISO CON ALGO (el método es de VistaGeneral)
+		VistaMenú.mostrarAviso("La opción elegida no está disponible");	// RELLENAR EL AVISO CON ALGO (el método es de VistaGeneral)
 	}
 
 
