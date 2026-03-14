@@ -5,11 +5,12 @@ import java.util.Arrays;
 /**
 * Núcleo de aplicación de consola de texto con menús. Aplicación
 * de texto usando tablas de multiplicar infantiles clásicas. 
+* @author dani - GitHub: lein9 _ sobre el código base de dhmartin
+* @version 3.0 20260314
 */
 public class ControlTablaMultiplicar {
-	/** Formato tipo «printf» para el nombre del archivo de exportación.
-	*/
-	public static final String FORMATO_RUTA_ARCHIVO_EXPORTACIÓN="tabla del %02d.txt";
+	/** Formato tipo «printf» para el nombre del archivo de exportación. */
+	public static final String FORMATO_RUTA_ARCHIVO_EXPORTACIÓN = "tabla del %02d.txt";
 	
 	/** Array de opciones para el menú */
 	public static final String[] OPCIONES_MENÚ_PRINCIPAL = {"Mostrar tabla", "Cambiar de tabla", "Exportar tabla"};
@@ -23,7 +24,6 @@ public class ControlTablaMultiplicar {
 	public ControlTablaMultiplicar(){
 		init();
 	}
-
 
 	/**
 	* Pide al usuario un número y prepara la primera tabla activa.
@@ -45,7 +45,7 @@ public class ControlTablaMultiplicar {
 		
 		do{
 			menú.mostrarOpciones();
-			opción=menú.pedirOpción();
+			opción = menú.pedirOpción();
 			
 			switch(opción){
 			case 1: // Mostrar tabla
@@ -83,7 +83,7 @@ public class ControlTablaMultiplicar {
 		
 		n = VistaGeneral.pedirNúmero("Introduzca el número para la tabla");
 		
-		tabla=new TablaMultiplicar(n);
+		tabla = new TablaMultiplicar(n);
 		tabla.generarTabla();
 	}
 
@@ -105,8 +105,5 @@ public class ControlTablaMultiplicar {
 	private void opciónNoDisponible(){
 		VistaMenú.mostrarAviso("La opción elegida no está disponible");	// RELLENAR EL AVISO CON ALGO (el método es de VistaGeneral)
 	}
-
-
-
 
 }
