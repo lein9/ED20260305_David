@@ -10,6 +10,7 @@ public class VistaGeneral {		/* ¿tal vez hacerla abstracta? */
 	private final static String FORMATO_PRINTF_MOSTRARTEXTO = "%s%n";
 	/** Formato para el texto de aviso -saldrá en verde, salvo consolas sin opción de color - */
 	private final static String FORMATO_PRINTF_MOSTRARAVISO = "\033[32m *** %s%n *** \033[m";
+	/** entrada para todo menú que se cree */
 	private static Scanner scEntrada;
 
 	public static Scanner getScEntrada() { // método getInstance()
@@ -19,7 +20,7 @@ public class VistaGeneral {		/* ¿tal vez hacerla abstracta? */
 
 		return scEntrada;
 	}
-
+	
 	public static void mostrarTexto(String texto) {
 		System.out.printf(FORMATO_PRINTF_MOSTRARTEXTO, texto);
 	}
@@ -88,8 +89,29 @@ public class VistaGeneral {		/* ¿tal vez hacerla abstracta? */
 		System.out.printf(FORMATO_PRINTF_MOSTRARTEXTO, base);
 	}
 
+	/**
+	 * Pide un entero, sacando por pantalla el mensaje pasado.  
+	 * @param texto cadena de texto a sacar por pantalla para pedir un nº. al usuario. 
+	 * @return entero introducido por el usuario. 
+	 */
 	public static int pedirNúmero(String texto) {
-
+		boolean introducido;
+		int num = 0;
+		
+		introducido = false;
+		
+		System.out.printf("%s%n", texto);	// Tipo "Introduzca el número para la tabla"
+		
+		do {
+			try {
+				num = Integer.parseInt( scEntrada.nextLine() );
+				introducido = true;
+			} catch (NumberFormatException e) {
+				System.out.println("Introduce un entero que corresponda a las opciones");
+			}
+		} while(!introducido);
+		
+		return num;
 	}
 
 	/**
@@ -139,9 +161,13 @@ public class VistaGeneral {		/* ¿tal vez hacerla abstracta? */
 		return confirmado;
 	}
 
+	/** 
+	 * Saca por pantalla las cadenas de texto que se le pase como parámetro. 
+	 * @param lista cadenas de texto que se imprimirán
+	 */
 	public void mostrarLista(List<String> lista) {
-		for (String elemento : ) {
-			
+		for (int i=0; i<lista.size(); i++) {
+			System.out.println(lista.get(i));
 		}
 	}
 }
