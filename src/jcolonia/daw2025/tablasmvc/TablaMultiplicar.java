@@ -25,6 +25,14 @@ public class TablaMultiplicar {
 	}
 	
 	/**
+	 * Devuelve el número del que se ha hecho la {@link TablaMultiplicar}. 
+	 * @return número del que se ha hecho la {@link TablaMultiplicar}. 
+	 */
+	public int getNúmero() {
+		return número;
+	}
+	
+	/**
 	 * Genera la tabla de multiplicar. 
 	 * La cual corresponde al número pasado a {@link TablaMultiplicar}
 	 */
