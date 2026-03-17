@@ -13,15 +13,15 @@ import java.util.List;
  * @author dani - GitHub: lein9
  * @version 2.0 20260312
  */
-public class ExportaciónArchivo {
+public abstract class ExportaciónArchivo {
 	/** ruta/nombre del archivo que se creará */
-	private Path refArchivo;
+	private static Path refArchivo;
 	
 	/**
 	 * Indica dónde y con qué nombre guardar el archivo. 
 	 * @param rutaArchivo ruta/nombre del archivo.  
 	 */
-	public void exportaciónArchivo(String rutaArchivo) {
+	public static void exportaciónArchivo(String rutaArchivo) {
 		refArchivo = Path.of(rutaArchivo);
 	}
 	
@@ -30,7 +30,7 @@ public class ExportaciónArchivo {
 	 * 
 	 * @param contenidos líneas a guardar en el archivo a exportar
 	 */
-	public void guardar(List <String> contenidos) {
+	public static void guardar(List <String> contenidos) {
 		if (refArchivo == null) {
 			throw new IllegalArgumentException("La ruta no puede ser nula");
 		}
