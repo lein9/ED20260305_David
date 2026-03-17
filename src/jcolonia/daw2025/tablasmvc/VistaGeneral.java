@@ -4,15 +4,22 @@ import java.util.Scanner;
 
 /**
  * Posee todas las funciones de impresión
+ * 
+ * @author dani <GitHub: lein9>
+ * @version 5.0 20260317
  */
 public abstract class VistaGeneral {
 	/** Formato para el texto mostrado por consola */
 	private final static String FORMATO_PRINTF_MOSTRARTEXTO = "%s%n";
 	/** Formato para el texto de aviso -saldrá en verde, salvo consolas sin opción de color- */
-	private final static String FORMATO_PRINTF_MOSTRARAVISO = "\033[32m *** %s%n *** \033[m";
+	private final static String FORMATO_PRINTF_MOSTRARAVISO = "\033[32m *** %s *** \033[m%n";
 	/** entrada para todo menú que se cree */
 	private static Scanner scEntrada;
 
+	/**
+	 * Crea un objeto de {@link Scanner} o devuelve el existente. 
+	 * @return Objeto de {@link Scanner}
+	 */
 	public static Scanner getScEntrada() { // método getInstance()
 		if (scEntrada == null) {
 			scEntrada = new Scanner(System.in);
@@ -21,6 +28,11 @@ public abstract class VistaGeneral {
 		return scEntrada;
 	}
 	
+	/**
+	 * Muestra el texto pasado por parámetro.
+	 * Siguiendo el formato indicado por la constante de clase FORMATO_PRINTF_MOSTRARTEXTO
+	 * @param texto Cadena de texto pasada como parámetro
+	 */
 	public static void mostrarTexto(String texto) {
 		System.out.printf(FORMATO_PRINTF_MOSTRARTEXTO, texto);
 	}
@@ -113,7 +125,7 @@ public abstract class VistaGeneral {
 				num = Integer.parseInt( scEntrada.nextLine() );
 				introducido = true;
 			} catch (NumberFormatException e) {
-				System.out.println("Introduce un entero que corresponda a las opciones");
+				System.out.println("Por favor introduzca un entero");
 			}
 		} while(!introducido);
 		
