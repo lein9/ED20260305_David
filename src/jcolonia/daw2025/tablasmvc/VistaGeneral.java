@@ -8,7 +8,7 @@ import java.util.Scanner;
 public abstract class VistaGeneral {
 	/** Formato para el texto mostrado por consola */
 	private final static String FORMATO_PRINTF_MOSTRARTEXTO = "%s%n";
-	/** Formato para el texto de aviso -saldrá en verde, salvo consolas sin opción de color - */
+	/** Formato para el texto de aviso -saldrá en verde, salvo consolas sin opción de color- */
 	private final static String FORMATO_PRINTF_MOSTRARAVISO = "\033[32m *** %s%n *** \033[m";
 	/** entrada para todo menú que se cree */
 	private static Scanner scEntrada;
@@ -104,6 +104,7 @@ public abstract class VistaGeneral {
 		int num = 0;
 		
 		introducido = false;
+		getScEntrada();
 		
 		System.out.printf("%s%n", texto);	// Tipo "Introduzca el número para la tabla"
 		
