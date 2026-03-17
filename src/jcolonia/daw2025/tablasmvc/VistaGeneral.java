@@ -5,7 +5,7 @@ import java.util.Scanner;
 /**
  * Posee todas las funciones de impresión
  */
-public class VistaGeneral {		/* ¿tal vez hacerla abstracta? */
+public abstract class VistaGeneral {
 	/** Formato para el texto mostrado por consola */
 	private final static String FORMATO_PRINTF_MOSTRARTEXTO = "%s%n";
 	/** Formato para el texto de aviso -saldrá en verde, salvo consolas sin opción de color - */
@@ -25,6 +25,11 @@ public class VistaGeneral {		/* ¿tal vez hacerla abstracta? */
 		System.out.printf(FORMATO_PRINTF_MOSTRARTEXTO, texto);
 	}
 
+	/**
+	 * Muestra el aviso pasado por parámetro.
+	 * Siguiendo el formato indicado por la constante de clase FORMATO_PRINTF_MOSTRARAVISO
+	 * @param texto Aviso pasado como parámetro
+	 */
 	public static void mostrarAviso(String texto) {
 		System.out.printf(FORMATO_PRINTF_MOSTRARAVISO, texto);
 	}
@@ -165,7 +170,7 @@ public class VistaGeneral {		/* ¿tal vez hacerla abstracta? */
 	 * Saca por pantalla las cadenas de texto que se le pase como parámetro. 
 	 * @param lista cadenas de texto que se imprimirán
 	 */
-	public void mostrarLista(List<String> lista) {
+	public static void mostrarLista(List<String> lista) {
 		for (int i=0; i<lista.size(); i++) {
 			System.out.println(lista.get(i));
 		}
