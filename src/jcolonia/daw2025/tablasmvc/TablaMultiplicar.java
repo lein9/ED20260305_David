@@ -62,7 +62,10 @@ public class TablaMultiplicar {
 	 *  "clave10": "7 × 10 =  70"
 	 * }</pre>
 	 * 
-	 * @return lista de cadenas de texto con las líneas de la {@link TablaMultiplicar} entrecomilladas 
+	 * A la hora de trabajar con las cadenas de texto retornadas, hay que tratar posibles apariciones de comillas 
+	 * dobles dentro del texto. Por ejemplo, en CSV se escapan con dobles comillas <span style="color: cadetblue;">""</span>, en java con un \ delante <span style="color: cadetblue;">\"</span>. 
+	 * 
+	 * @return Lista de cadenas de texto con las líneas de la {@link TablaMultiplicar} entrecomilladas 
 	 */
 	public List<String> toListaExportación() {
 		List <String> aDevolver;
