@@ -1,6 +1,7 @@
 package jcolonia.daw2025.tablasmvc;
 
 import java.util.Arrays;
+import java.util.List;
 
 /**
 * Núcleo de aplicación de consola de texto con menús. Aplicación
@@ -73,7 +74,9 @@ public class ControlTablaMultiplicar {
 	/**
 	* Muestra por pantalla -envía a la salida estándar- los productos correspondientes a la tabla activa.
 	*/
-	private void mostrarTabla(){}
+	private void mostrarTabla(){
+		VistaGeneral.mostrarLista(tabla.toListaPantalla());
+	}
 	
 	/**
 	* Cambia la tabla activa por otra elegida por el usuario.
