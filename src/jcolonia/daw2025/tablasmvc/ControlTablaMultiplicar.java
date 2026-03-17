@@ -30,6 +30,7 @@ public class ControlTablaMultiplicar {
 	* Pide al usuario un número y prepara la primera tabla activa.
 	*/
 	public void init(){
+		VistaGeneral.mostrarTítulo("Tablas de multiplicar");
 		cambiarTabla();
 	}
 
@@ -41,10 +42,18 @@ public class ControlTablaMultiplicar {
 	public void buclePrincipal(){
 		VistaMenú menú;
 		int opción;
+		String textoTablaActual;
 		
 		menú = new VistaMenú("Tablas de multiplicar", List.of(OPCIONES_MENÚ_PRINCIPAL));
 		
 		do{
+			// pausa de confirmación y muestra el número para la tabla actual
+			VistaGeneral.pausa("Pulsa una tecla para continuar...");
+			textoTablaActual = String.format("Estamos en la tabla del %d", tabla.getNúmero());
+			VistaGeneral.mostrarTexto(textoTablaActual);
+						
+			// Muestra el menú y pide una opción
+			VistaGeneral.mostrarTítulo2("Menú principal");
 			menú.mostrarOpciones();
 			opción = menú.pedirOpción();
 			
