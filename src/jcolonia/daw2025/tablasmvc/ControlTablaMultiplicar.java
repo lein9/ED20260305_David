@@ -42,6 +42,7 @@ public class ControlTablaMultiplicar {
 		VistaMenú menú;
 		int opción;
 		String textoTablaActual;
+		boolean seSale;
 		
 		menú = new VistaMenú("Tablas de multiplicar", List.of(OPCIONES_MENÚ_PRINCIPAL));
 		
@@ -67,6 +68,10 @@ public class ControlTablaMultiplicar {
 				exportarTabla();
 				break;
 			case 0: // Salir
+				seSale = VistaGeneral.pedirConfirmación("¿Quieres salir del programa? → s - sí | n - no ");
+				if (!seSale) {
+					opción = 1;	// cambiamos el valor de 'opción' para que no salga del bucle
+				}
 				break;
 			default: // Opciones no implementadas
 				opciónNoDisponible();
@@ -126,7 +131,7 @@ public class ControlTablaMultiplicar {
 	* la opción elegida no está disponible.
 	*/
 	private void opciónNoDisponible(){
-		VistaGeneral.mostrarAviso("La opción elegida no está disponible");	// RELLENAR EL AVISO CON ALGO (el método es de VistaGeneral)
+		VistaGeneral.mostrarAviso("La opción elegida no está disponible");
 	}
 
 }
