@@ -1,6 +1,5 @@
 package jcolonia.daw2025.tablasmvc;
 
-import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -51,7 +50,7 @@ public class ControlTablaMultiplicar {
 			VistaGeneral.pausa("Pulsa una tecla para continuar...");
 			textoTablaActual = String.format("Estamos en la tabla del %d", tabla.getNúmero());
 			VistaGeneral.mostrarTexto(textoTablaActual);
-						
+			
 			// Muestra el menú y pide una opción
 			VistaGeneral.mostrarTítulo2("Menú principal");
 			menú.mostrarOpciones();
@@ -73,7 +72,6 @@ public class ControlTablaMultiplicar {
 				opciónNoDisponible();
 				break;
 			}
-			
 		} while (opción!=0);
 		
 		VistaGeneral.mostrarAviso("FIN");
@@ -100,7 +98,7 @@ public class ControlTablaMultiplicar {
 	private void cambiarTabla(){
 		int n;
 		
-		n = VistaGeneral.pedirNúmero("Introduzca el número para la tabla");
+		n = VistaGeneral.pedirNúmero("Introduzca el número para la tabla ");
 		
 		tabla = new TablaMultiplicar(n);
 		tabla.generarTabla();
@@ -124,11 +122,11 @@ public class ControlTablaMultiplicar {
 	}
 	
 	/**
-	 * Muestra un mensaje de aviso indicando que 
-	 * la opción elegida no está disponible.
+	* Muestra un mensaje de aviso indicando que 
+	* la opción elegida no está disponible.
 	*/
 	private void opciónNoDisponible(){
-		VistaMenú.mostrarAviso("La opción elegida no está disponible");	// RELLENAR EL AVISO CON ALGO (el método es de VistaGeneral)
+		VistaGeneral.mostrarAviso("La opción elegida no está disponible");	// RELLENAR EL AVISO CON ALGO (el método es de VistaGeneral)
 	}
 
 }
