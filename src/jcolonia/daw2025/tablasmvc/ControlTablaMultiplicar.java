@@ -110,11 +110,17 @@ public class ControlTablaMultiplicar {
 	* Envía a un archivo los productos correspondientes a la tabla activa.
 	*/
 	private void exportarTabla(){
-		ExportaciónArchivo exp;
-		exp = new ExportaciónArchivo();
+		String notificaciónDeExportación;
+		String ruta;
 		
-		exp.exportaciónArchivo(FORMATO_RUTA_ARCHIVO_EXPORTACIÓN);
-		exp.guardar(Arrays.asList(OPCIONES_MENÚ_PRINCIPAL));
+		// Se exporta
+		ruta = String.format(FORMATO_RUTA_ARCHIVO_EXPORTACIÓN, tabla.getNúmero());
+		ExportaciónArchivo.exportaciónArchivo(ruta);
+		ExportaciónArchivo.guardar(tabla.toListaExportación());
+		
+		// Se notifica que se ha exportado
+		notificaciónDeExportación = String.format("Tabla exportada a la ruta: %n\"%s\"", ruta);
+		VistaGeneral.mostrarTexto(notificaciónDeExportación);
 	}
 	
 	/**
