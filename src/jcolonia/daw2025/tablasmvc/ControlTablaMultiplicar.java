@@ -84,7 +84,14 @@ public class ControlTablaMultiplicar {
 	* Muestra por pantalla -envía a la salida estándar- los productos correspondientes a la tabla activa.
 	*/
 	private void mostrarTabla(){
-		VistaGeneral.mostrarLista(tabla.toListaPantalla());
+		// TÍTULO
+		String textoTituloTabla;
+		textoTituloTabla = String.format("Tabla del %d", tabla.getNúmero());
+		VistaGeneral.mostrarTítulo2(textoTituloTabla);
+		
+		// TABLA
+		VistaGeneral.mostrarLista(tabla.toListaPantalla());	// muestra la tabla
+		System.out.println();
 	}
 	
 	/**
