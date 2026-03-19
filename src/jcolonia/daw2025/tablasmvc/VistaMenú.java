@@ -23,6 +23,7 @@ public class VistaMenú {
 	 * @param opciones lista de elecciones que aparecerán en el menú
 	 */
 	public VistaMenú (String título, List<String> opciones) {
+		// super(); no se llama porque la clase padre es abstracta.
 		this.título = título;
 		this.opciones = new ArrayList<String>(opciones);
 	}

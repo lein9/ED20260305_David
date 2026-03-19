@@ -3,12 +3,13 @@ import java.util.List;
 import java.util.Scanner;
 
 /**
- * Posee todas las funciones de impresión
+ * Posee todas las funciones de impresión. 
+ * Clase abstracta de utilidad <em>(no final)</em> con funciones de vista. 
  * 
  * @author dani <GitHub: lein9>
  * @version 5.0 20260317
  */
-public abstract class VistaGeneral {
+public abstract class VistaGeneral {	// como es una 'clase de utilidad' extensible, la hago 'abstract'
 	/** Formato para el texto mostrado por consola */
 	private final static String FORMATO_PRINTF_MOSTRARTEXTO = "%s%n";
 	/** Formato para el texto de aviso -saldrá en verde, salvo consolas sin opción de color- */

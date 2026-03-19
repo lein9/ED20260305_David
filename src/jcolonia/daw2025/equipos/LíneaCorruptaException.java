@@ -1,7 +1,8 @@
 package jcolonia.daw2025.equipos;
 
 /**
- * Excepción utilizada en {@link Equipo}. 
+ * Excepción lanzada cuando la línea con la que se va a trabajar no tiene los datos esperados. 
+ * Utilizada por ejemplo en {@link Equipo}. 
  * 
  * @author dani - GitHub: lein9
  * @version 1.0 20260318
