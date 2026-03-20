@@ -55,21 +55,10 @@ public class VistaMenú {
 	 */
 	public int pedirOpción() {
 		int num;	// entero a devolver, que representa la opción
-		boolean introducido;
 		String mensajeAMostrar;
 		
-		num = 0;
-		introducido = false;
 		mensajeAMostrar = String.format("Elija opción entre el 0 y %d", opciones.size());
-		
-		do {
-			try {
-				num = VistaGeneral.pedirNúmero(mensajeAMostrar);
-				introducido = true;
-			} catch(NumberFormatException e) {
-				System.out.println("Por favor, introduzca un entero que corresponda a las opciones");
-			}
-		} while (!introducido);
+		num = VistaGeneral.pedirNúmero(mensajeAMostrar);
 		
 		return num;
 	}
