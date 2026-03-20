@@ -13,9 +13,11 @@ import java.util.List;
  * @author dani - GitHub: lein9
  * @version 2.0 20260312
  */
-public abstract class ExportaciónArchivo {
+public final class ExportaciónArchivo {
 	/** ruta/nombre del archivo que se creará */
 	private static Path refArchivo;
+	
+	// private ExportaciónArchivo() {}
 	
 	/**
 	 * Indica dónde y con qué nombre guardar el archivo. 

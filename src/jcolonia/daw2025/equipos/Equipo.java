@@ -81,7 +81,7 @@ public class Equipo {
 
 		try {
 			fundaciónNuevo = Integer.parseInt(datosEquipo[3]);
-			if (fundaciónNuevo <= 1857) {
+			if (fundaciónNuevo < 1857) {
 				// El 1er club de fútbol (Sheffield F.C) fue fundado en 1857
 				throw new LíneaCorruptaException("El año debe ser igual o posterior a 1857");
 			}
