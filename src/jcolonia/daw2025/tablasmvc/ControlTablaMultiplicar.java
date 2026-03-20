@@ -2,6 +2,10 @@ package jcolonia.daw2025.tablasmvc;
 
 import java.util.List;
 
+import jcolonia.daw2025.comun.ExportaciónArchivo;
+import jcolonia.daw2025.comun.VistaGeneral;
+import jcolonia.daw2025.comun.VistaMenú;
+
 /**
 * Núcleo de aplicación de consola de texto con menús. Aplicación
 * de texto usando tablas de multiplicar infantiles clásicas. 

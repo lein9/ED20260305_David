@@ -1,4 +1,4 @@
-package jcolonia.daw2025.tablasmvc;
+package jcolonia.daw2025.comun;
 import java.util.List;
 import java.util.Scanner;
 
