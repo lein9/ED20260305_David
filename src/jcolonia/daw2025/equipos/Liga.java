@@ -3,6 +3,7 @@ package jcolonia.daw2025.equipos;
 import java.util.List;
 import java.util.ArrayList;
 
+import jcolonia.daw2025.equipos.excepciones.LigaSinEquiposException;
 import jcolonia.daw2025.equipos.excepciones.LíneaCorruptaException;
 
 /**
@@ -28,10 +29,13 @@ public class Liga {
 	
 	/**
 	 * Crea una Liga que tendrá {@link Liga#equipos equipos} de fútbol. 
-	 * @param 
+	 * @param nombre Nombre de la liga. 
+	 * @param equipos Cadenas de texto con equipos de la liga.
 	 */
 	public Liga(String nombre, List <String> equipos) {
 		this.liga = nombre;
+		
+		this.equipos = new ArrayList<Equipo>(20);
 		
 		for(int i=0; i<equipos.size(); i++) {
 			try {
@@ -67,10 +71,29 @@ public class Liga {
 	}
 	
 	/**
+	 * Devuelve el equipo de la {@link Liga} con el índice pasado. 
+	 * @param i Índice que ocupa en la {@link Liga} el equipo a devolver. 
+	 * @return Equipo con el índice indicado. 
+	 * @throws LigaSinEquiposException Lanzada cuando sin haber equipos, se intenta operar sobre uno. 
+	 */
+	public Equipo getEquipo (int i) throws LigaSinEquiposException {
+		if (equipos.isEmpty()) {
+			throw new LigaSinEquiposException("La liga no tiene equipos");
+		}
+		
+		return equipos.get(i);
+	}
+	
+	/**
 	 * Exporta una lista de cadenas de texto, donde cada línea contiene los datos de un {@link Equipo}. 
 	 * @return Lista de cadenas de texto donde cada cadena contiene los datos de un {@link Equipo}. 
+	 * @throws LigaSinEquiposException Lanzada cuando sin haber equipos, se intenta operar sobre uno. 
 	 */
-	public List<String> toListaExportar() {
+	public List<String> toListaExportar() throws LigaSinEquiposException {
+		if (equipos.isEmpty()) {
+			throw new LigaSinEquiposException("La liga no tiene equipos");
+		}
+		
 		List <String> líneaAExportar;
 		líneaAExportar = new ArrayList <String> (20);
 		
@@ -86,8 +109,13 @@ public class Liga {
 	 * equipo de la {@link Liga}. 
 	 * 
 	 * @return Lista de cadenas de texto con los datos de los equipos de la {@link Liga}
+	 * @throws LigaSinEquiposException Lanzada cuando sin haber equipos, se intenta operar sobre uno. 
 	 */
-	public List<String> toListaPantalla() {
+	public List<String> toListaPantalla() throws LigaSinEquiposException {
+		if (equipos.isEmpty()) {
+			throw new LigaSinEquiposException("La liga no tiene equipos");
+		}
+		
 		List <String> líneaAExportar;
 		líneaAExportar = new ArrayList <String> (20);
 		
