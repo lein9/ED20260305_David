@@ -1,4 +1,6 @@
-package jcolonia.daw2025.equipos;
+package jcolonia.daw2025.equipos.excepciones;
+
+import jcolonia.daw2025.equipos.Equipo;
 
 /**
  * Excepción lanzada cuando la línea con la que se va a trabajar no tiene los datos esperados. 

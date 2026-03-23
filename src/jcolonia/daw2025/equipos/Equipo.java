@@ -1,5 +1,7 @@
 package jcolonia.daw2025.equipos;
 
+import jcolonia.daw2025.equipos.excepciones.LíneaCorruptaException;
+
 /**
  * Representación de un equipo de fútbol. 
  * Tiene los siguientes datos: nombre, estadio, presidente, año de fundación y tipo de propiedad. 

@@ -3,6 +3,8 @@ package jcolonia.daw2025.equipos;
 import java.util.List;
 import java.util.ArrayList;
 
+import jcolonia.daw2025.equipos.excepciones.LíneaCorruptaException;
+
 /**
  * Representación de una liga. Esta consta de nombre, una lista de equipos y funciones para consultar; 
  * exportar, añadir equipos y crear ligas.  
