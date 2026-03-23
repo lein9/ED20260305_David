@@ -54,14 +54,15 @@ public class Equipo {
 	 * Un entero: el año de la fundación.
 	 * Un dato enumerado: CLUB_DE_SOCIOS o SAD.
 	 * 
-	 * @param líneaExportada Línea recibida con datos del club. 
+	 * @param líneaImportada Línea recibida con datos del club. 
 	 * @return El nuevo equipo creado. 
 	 * @throws LíneaCorruptaException Lanzada cuando la línea pasada como parámetro no sigue la estructura esperada.
 	 */
-	public static Equipo of(String líneaExportada) throws LíneaCorruptaException{
-		if (líneaExportada == null) { throw new LíneaCorruptaException("La línea pasada está vacía."); }
-		
+	public static Equipo of(String líneaImportada) throws LíneaCorruptaException {
+		if (líneaImportada == null) { throw new LíneaCorruptaException("La línea pasada está vacía."); }
+
 		Equipo equipoNuevo;
+		String textoTipo;
 		
 		// datos que almacenará el nuevo equipo
 		String nombreNuevo;
@@ -73,7 +74,7 @@ public class Equipo {
 		// Dividimos el String del parámetro y metemos las divisiones en un array
 		String[] datosEquipo;
 		datosEquipo = new String[5];
-		datosEquipo = líneaExportada.split("#");
+		datosEquipo = líneaImportada.split("#");
 		
 		if (datosEquipo.length != 5) { throw new LíneaCorruptaException("Número de datos no esperado (5)."); }
 						
@@ -90,17 +91,23 @@ public class Equipo {
 		} catch(NumberFormatException e) {
 			throw new LíneaCorruptaException("El año de fundación debería ser un entero.");
 		}
-		
-		if (datosEquipo[4].equals("CLUB_DE_SOCIOS")) {
-			propiedadNuevo = TipoPropiedad.CLUB_DE_SOCIOS;
-		} else if (datosEquipo[4].equals("SAD")) {
-			propiedadNuevo = TipoPropiedad.SAD;
-		} else {
+
+		try {
+			/* tuve problemas al intentar comparar con datosEquipo[4], así que le dí 
+			 * vueltas hasta que funcionó. */
+			textoTipo = TipoPropiedad.valueOf(datosEquipo[4].trim()).toString();
+		} catch (IllegalArgumentException e) {
 			throw new LíneaCorruptaException("El dato de tipo de propiedad es incorrecto. Válido: CLUB_DE_SOCIOS o SAD");
 		}
 		
-		equipoNuevo = new Equipo(nombreNuevo, estadioNuevo, presidenteNuevo, fundaciónNuevo, propiedadNuevo);
+		if ( "CLUB_DE_SOCIOS".equals(textoTipo) ) {
+			propiedadNuevo = TipoPropiedad.CLUB_DE_SOCIOS;
+		} else {
+			propiedadNuevo = TipoPropiedad.SAD;
+		}
 		
+		equipoNuevo = new Equipo(nombreNuevo, estadioNuevo, presidenteNuevo, fundaciónNuevo, propiedadNuevo);
+
 		return equipoNuevo;
 	}
 
